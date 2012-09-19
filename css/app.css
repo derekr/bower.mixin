@@ -2,11 +2,15 @@
   box-sizing: border-box;
 }
 
+body, html {
+  min-width: 420px;
+}
+
 body {
   margin: 0;
   padding: 35px 0 0 0;
   
-  font: normal normal normal 1em/1.5em Helvetica, Arial, sans-serif;
+  font: normal normal normal 14px/1.5 Helvetica, Arial, sans-serif;
   
   color: #333;
   
@@ -27,27 +31,53 @@ body {
 
 #packages {
   width: 100%;
+  
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  font-size: 1em;
 }
 
-#packages td {
+#packages > li {
+  overflow: auto;
+}
+
+#packages > li > .package-info {
+  float: left;
+  padding: .2em .2em .2em 1em;
+  
+  max-width: 320px;
+}
+
+#packages > li > .package-info > span {
+  display: block;
+}
+
+#packages > li > span:last-child {
   padding: .2em;
-}
-
-#packages td:first-child {
-  padding-left: 1em;
-}
-
-#packages td:last-child {
   padding-right: 1em;
-  text-align: right;
+  
+  float: right;
+}
+
+#packages > li:nth-child(odd) {
+  background-color: #f6f7f9;
 }
 
 #packages .url {
+  font-size: .9em;
   color: #999;
+  text-overflow: ellipsis;
 }
 
-#packages .odd td {
-  background-color: #f6f7f9;
+@media screen and (max-width: 480px) {
+  
+  #packages .url {
+    
+  }
+  
+  
 }
 
 .filter-bar {

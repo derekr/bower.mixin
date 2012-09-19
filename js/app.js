@@ -6,13 +6,9 @@ app.init = function (packages) {
   // get all packages
   // init with shit
   
-  var packageLiString = '';
+  var rowsTmpl = Handlebars.templates['rows.tmpl'];
   
-  _.each(packages, function (package) {
-    packageLiString += '<li>' + package.name + ' - ' + package.url + '</li>';
-  });
-  
-  this.list.append(packageLiString);
+  this.list.append(rowsTmpl({ packages: packages }));
 };
 
 app.spinner = {};
