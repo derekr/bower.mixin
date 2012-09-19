@@ -12,6 +12,7 @@ Hooks.addMenuItem("Actions/Bower/Install components…", "cmd-ctrl-b", function(
   
   var win = new Window();
   win.htmlPath = "index.html";
+  win.useDefaultCSS = true;
   win.buttons = ["Nevermind"];
   win.onButtonClick = function() { win.close(); }
   win.run();
