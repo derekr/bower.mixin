@@ -8,7 +8,25 @@ app.init = function (packages) {
   
   var rowsTmpl = Handlebars.templates['rows.tmpl'];
   
-  this.list.append(rowsTmpl({ packages: packages }));
+  var html = rowsTmpl({ packages: packages });
+ 
+  this.list.append(html);
+  
+  this.initFilterBar();
+};
+
+app.initFilterBar = function () {
+  $('.filter-bar input').keyup(function (e) {
+    var val = $(e.currentTarget).val();
+    
+    if (val) {
+      var matchSelector = '[data-package-name*="' + val + '"]';
+      $('#packages li').not(matchSelector).hide();
+      $(matchSelector).show();
+    } else {
+      $('#packages li').show();
+    }
+  });
 };
 
 app.spinner = {};
@@ -40,3 +58,7 @@ app.spinner.addCenteredSpinner = function () {
 app.spinner.removeCenteredSpinner = function () {
   this.centeredSpinner.stop();
 };
+
+Handlebars.registerHelper('lower', function(str) {
+  return str.toLowerCase();
+});
