@@ -11,13 +11,16 @@ function program1(depth0,data) {
   stack1 = depth0.name;
   foundHelper = helpers.lower;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "lower", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n  <div class=\"package-info\">\n    <span class=\"name\">";
+  buffer += escapeExpression(stack1) + "\" class=\"visible\">\n  <div class=\"package-info\">\n    <span class=\"name\">";
   stack1 = depth0.name;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "</span>\n    <span class=\"url\">";
   stack1 = depth0.url;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + "</span>\n  </div>\n  <span class=\"action\">\n    <button>Install</button>\n  </span>\n</li>\n";
+  buffer += escapeExpression(stack1) + "</span>\n  </div>\n  <span class=\"action\">\n    <button data-package-name=\"";
+  stack1 = depth0.name;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
+  buffer += escapeExpression(stack1) + "\">Install</button>\n  </span>\n</li>\n";
   return buffer;}
 
   stack1 = depth0.packages;

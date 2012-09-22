@@ -12,6 +12,10 @@ app.init = function (packages) {
  
   this.list.append(html);
   
+  this.list.on('click', 'button', function (e) {
+    chocolat.sendMessage('install', [$(e.target).data('package-name')]);
+  });
+  
   this.initFilterBar();
 };
 
@@ -20,9 +24,9 @@ app.initFilterBar = function () {
     var val = $(e.currentTarget).val();
     
     if (val) {
-      var matchSelector = '[data-package-name*="' + val + '"]';
-      $('#packages li').not(matchSelector).hide();
-      $(matchSelector).show();
+      var matchSelector = '[data-package-name*="' + val.toLowerCase() + '"]';
+      $('#packages li').not(matchSelector).removeClass('visible').hide();
+      $(matchSelector).addClass('visible').show();
     } else {
       $('#packages li').show();
     }

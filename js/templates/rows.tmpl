@@ -1,11 +1,11 @@
 {{#each packages}}
-<li data-package-name="{{lower this.name}}">
+<li data-package-name="{{lower this.name}}" class="visible">
   <div class="package-info">
     <span class="name">{{this.name}}</span>
     <span class="url">{{this.url}}</span>
   </div>
   <span class="action">
-    <button>Install</button>
+    <button data-package-name="{{this.name}}">Install</button>
   </span>
 </li>
 {{/each}}
